@@ -13,13 +13,13 @@ Every row contains details on a particular crypto contract. Add a share button i
 
 ## content format
 
-Welcome to Pi42! Today's update on Bitcoin. \n
-symbol name: BTC/INR \n
-last price: ₹60,58,593 \n
-24 hour change percentage: 0.01% \n
-24 hour volume: 1,75,000 \n
-24 hour high: ₹61,60,580 \n
-24 hour low: ₹60,00,001 \n
+Welcome to Pi42! Today's update on Bitcoin. <br/>
+symbol name: BTC/INR <br/>
+last price: ₹60,58,593 <br/>
+24 hour change percentage: 0.01% <br/>
+24 hour volume: 1,75,000 <br/>
+24 hour high: ₹61,60,580 <br/>
+24 hour low: ₹60,00,001 <br/>
 
 **Test cases are expected. Preference will be given to people who writes clean code with unit test cases.**
 
