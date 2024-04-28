@@ -8,6 +8,20 @@ import { formatToIndianNumber, formattedPrice, renderSymbolImage, shortenNumber 
 import { TbBrandWhatsapp } from "react-icons/tb"
 import GlimpseStat from "../../components/GlimpseStat"
 
+/**
+ * Home component to render the home page of the application for showing the contract details
+ * @constant {T_ContractTable[]} columns - to store the columns for the table
+ * @constant {T_ContractTable[]} data - to store the contract details
+ * @constant {T_HighLowPrice} highPrice - to store the high price of the contract
+ * @constant {T_HighLowPrice} lowPrice - to store the low price of the contract
+ * @constant {T_AllContracts} allContracts - to store all the contract details
+ * @constant {SearchParams} searchParams - to store the search params
+ * @constant {string} symbol - to store the symbol
+ * @function handleLogout - to handle the logout functionality
+ * @function handleShare - to handle the share functionality
+ * @returns
+ */
+
 
 const columns = [
     {

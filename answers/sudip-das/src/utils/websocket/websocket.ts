@@ -1,6 +1,15 @@
 import io from 'socket.io-client'
 import { T_AllContracts } from '../../types/contracts';
 
+/**
+ * Websocket details to connect to the Pi42 WebSocket
+ * @constant {string} PI42_WS_URL - to store the WebSocket URL
+ * @constant {Socket} socket - to store the socket connection
+ * @function connectToPi42WebSocket - to connect to the Pi42 WebSocket
+ * @function closePi42WebSocket - to close the Pi42 WebSocket connection
+ * @returns
+ */
+
 const PI42_WS_URL = import.meta.env.VITE_APP_WS_URL;
 
 const socket = io(PI42_WS_URL, { transports: ["websocket"] })

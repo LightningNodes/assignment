@@ -3,6 +3,14 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from "../utils/firebase"
 import { T_Login, T_Register } from "../types/auth"
 
+/**
+ * This file contains the hooks for user login, register and get user details
+ * @constant {function} useUserLogin - to use the user login mutation
+ * @constant {function} useUserRegister - to use the user register mutation
+ * @constant {function} useGetUserDetails - to use the user details query
+ * @returns 
+ */
+
 export const useUserLogin = () => {
     return useMutation({
         mutationKey: ['userLogin'],

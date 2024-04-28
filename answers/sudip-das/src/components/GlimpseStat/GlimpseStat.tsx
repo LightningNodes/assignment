@@ -2,6 +2,15 @@ import styles from './GlimpseStat.module.scss'
 import { formatToIndianNumber, formattedPrice, renderSymbolImage } from '../../utils/functions/functions'
 import { T_AllContracts, T_HighLowPrice } from '../../types/contracts'
 
+/**
+ * GlimpseStat component to render the glimpse of the contract details
+ * @param {string} symbol - to store the symbol of the contract
+ * @param {T_AllContracts} allContracts - to store all the contract details
+ * @param {T_HighLowPrice} lowPrice - to store the low price of the contract
+ * @param {T_HighLowPrice} highPrice - to store the high price of the contract
+ * @returns
+ */
+
 interface Props {
     symbol: string
     allContracts: T_AllContracts

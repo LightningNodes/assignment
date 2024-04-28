@@ -5,6 +5,13 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 
+/**
+ * Auth component to render the login and register components
+ * @constant {AuthType} type - to set the type of auth component to render
+ * @function setType - to set the type of auth component to render
+ * @returns 
+ */
+
 export default function Auth() {
     const [type, setType] = useState<AuthType>(AuthType.Login);
     

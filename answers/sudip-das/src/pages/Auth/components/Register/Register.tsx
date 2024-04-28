@@ -5,6 +5,13 @@ import { Button, Form, Input, message } from 'antd'
 import { useUserRegister } from '../../../../api/auth.hooks'
 import { T_Register } from '../../../../types/auth'
 
+/**
+ * Register component to render the register form
+ * @function handleRegister - to handle the register form submission
+ * @param {React.Dispatch<React.SetStateAction<AuthType>>} setType - to set the type of auth component to render
+ * @returns
+ */
+
 interface Props {
     setType: React.Dispatch<React.SetStateAction<AuthType>>
 }

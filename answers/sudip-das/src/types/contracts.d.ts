@@ -1,3 +1,10 @@
+/**
+ * @typedef T_Contract - to store the contract details
+ * @typedef T_ContractTable - to store the contract details in table format
+ * @typedef T_HighLowPrice - to store the high and low price of the contract
+ * @typedef T_AllContracts - to store all the contract details
+ */
+
 export type T_Contract = {
     baseAssetVolume: string
     lastPrice:string

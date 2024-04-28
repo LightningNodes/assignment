@@ -8,6 +8,13 @@ import { useDispatch } from 'react-redux'
 import { setUser } from '../../../../store/slices/userSlice'
 import { useNavigate } from 'react-router-dom'
 
+/**
+ * Login component to render the login form
+ * @function handleSubmitLogin - to handle the login form submission
+ * @param {React.Dispatch<React.SetStateAction<AuthType>>} setType - to set the type of auth component to render
+ * @returns
+ */
+
 interface Props {
     setType: React.Dispatch<React.SetStateAction<AuthType>>
 }

@@ -1,3 +1,12 @@
+/**
+ * Functions are used to perform a specific task.
+ * @constant formattedPrice - to format the price to Indian currency
+ * @constant formatToIndianNumber - to format the number to Indian number format
+ * @constant shortenNumber - to shorten the number
+ * @constant renderSymbolImage - to render the symbol image
+ * @returns 
+ */
+
 export const formattedPrice = (price:string)=>{
     const formatPriceToNumber = parseInt(price)
     return formatPriceToNumber.toLocaleString('en-IN', {
