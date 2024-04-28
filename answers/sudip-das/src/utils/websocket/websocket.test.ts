@@ -21,6 +21,7 @@ describe('WebSocketUtils', () => {
         mockOn.mockImplementation((event: string, callback: (...args: any[]) => void) => {
             if (event === 'connect') callback();
             if (event === 'allContractDetails') callback(mockData);
+            return socket;
         });
         connectToPi42WebSocket(onMessageCallback);
 
@@ -39,6 +40,7 @@ describe('WebSocketUtils', () => {
         const mockConnect = vi.spyOn(socket, 'connect');
         mockOn.mockImplementation((event: string, callback: (...args: any[]) => void) => {
             if (event === 'disconnect') callback();
+            return socket;
         });
         connectToPi42WebSocket(vi.fn());
         expect(mockConnect).toHaveBeenCalled();
@@ -49,6 +51,7 @@ describe('WebSocketUtils', () => {
         const mockOn = vi.spyOn(socket, 'on');
         mockOn.mockImplementation((event: string, callback: (...args: any[]) => void) => {
             if (event === 'connect') callback();
+            return socket;
         });
         connectToPi42WebSocket(vi.fn());
         expect(mockLog).toHaveBeenCalledWith('Connected to Pi42 WebSocket');
@@ -59,6 +62,7 @@ describe('WebSocketUtils', () => {
         const mockOn = vi.spyOn(socket, 'on');
         mockOn.mockImplementation((event: string, callback: (...args: any[]) => void) => {
             if (event === 'disconnect') callback();
+            return socket
         });
         connectToPi42WebSocket(vi.fn());
         expect(mockLog).toHaveBeenCalledWith('Disconnected from Pi42 WebSocket');
@@ -69,6 +73,7 @@ describe('WebSocketUtils', () => {
         const mockOn = vi.spyOn(socket, 'on');
         mockOn.mockImplementation((event: string, callback: (...args: any[]) => void) => {
             if (event === 'disconnect') callback();
+            return socket
         });
         connectToPi42WebSocket(vi.fn());
         expect(mockLog).toHaveBeenCalledWith('Reconnecting to Pi42 WebSocket');
