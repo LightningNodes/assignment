@@ -1,0 +1,28 @@
+@import url('./styles/modified.css');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: #0c1012;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --sp-xs: 12px;
+  --sp-sm: 16px;
+  --sp-md: 24px;
+  --sp-lg: 32px;
+  --sp-xl: 48px;
+}
+label{
+  font-weight: 500;
+  color: #fff!important;
+}
+body {
+  margin: 0;
+}
+*{
+  margin: 0;
+}
