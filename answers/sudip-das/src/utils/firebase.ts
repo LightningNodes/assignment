@@ -7,15 +7,23 @@ import { getDatabase } from 'firebase/database';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+const VITE_APP_FIREBASE_KEY = import.meta.env.VITE_APP_FIREBASE_KEY
+const VITE_APP_FIREBASE_AUTH_DOMAIN = import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN
+const VITE_APP_FIREBASE_PROJECT_ID = import.meta.env.VITE_APP_FIREBASE_PROJECT_ID
+const VITE_APP_FIREBASE_STORAGE_BUCKET = import.meta.env.VITE_APP_FIREBASE_STORAGE_BUCKET
+const VITE_APP_FIREBASE_MESSAGING_SENDER_ID = import.meta.env.VITE_APP_FIREBASE_MESSAGING_SENDER_ID
+const VITE_APP_FIREBASE_APP_ID = import.meta.env.VITE_APP_FIREBASE_APP_ID
+const VITE_APP_FIREBASE_MEASUREMENT_ID = import.meta.env.VITE_APP_FIREBASE_MEASUREMENT_ID
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyA0gA2j1_GCen42MCsM9FXZxLD0OwK25Dc",
-    authDomain: "pi42-b9e22.firebaseapp.com",
-    projectId: "pi42-b9e22",
-    storageBucket: "pi42-b9e22.appspot.com",
-    messagingSenderId: "877510527964",
-    appId: "1:877510527964:web:f68a477d15dd4fa6ed1d19",
-    measurementId: "G-PT5BZLZ6SW"
+    apiKey: VITE_APP_FIREBASE_KEY,
+    authDomain: VITE_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: VITE_APP_FIREBASE_PROJECT_ID,
+    storageBucket: VITE_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: VITE_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: VITE_APP_FIREBASE_APP_ID,
+    measurementId: VITE_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
