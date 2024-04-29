@@ -135,6 +135,7 @@ export default function DataExporter({
         setC1D(TransformedData);
       }
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <>{children(isSocketConnected, CoinData)}</>;

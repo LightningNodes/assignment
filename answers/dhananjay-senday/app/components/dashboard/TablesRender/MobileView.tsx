@@ -116,6 +116,7 @@ function Container({
           <div>
             24H %age
             <span
+              title="change_percentage"
               className={`text-center ${
                 parseFloat(coin._24HourChangePercentage) > 0
                   ? "text-green-400"
