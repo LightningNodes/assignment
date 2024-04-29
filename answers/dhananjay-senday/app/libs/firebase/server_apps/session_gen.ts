@@ -10,5 +10,4 @@ export async function CreateFirebaseSession(UserUid: string) {
     sameSite: "strict",
     maxAge: 60 * 60 * 24 * 7, // 1 week
   });
-  redirect("/dashboard");
 }
