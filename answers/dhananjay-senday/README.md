@@ -9,4 +9,6 @@ deployed Link : - https://pi42.jaay.fun/
 Submitted By :-
 Name : Dhananjay Senday
 email : dhananjaysenday123@gmail.com
+site : https://dhananjaay.dev
+Linkedin : https://www.linkedin.com/in/dhananjay-senday-422208219/
 resume_link : https://drive.google.com/file/d/1STVEoCiCG9LS9CvXntZLHgQxuPIXA7U1/view?pli=1
