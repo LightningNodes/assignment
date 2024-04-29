@@ -19,6 +19,7 @@ export default function TDesktop({
           <th className="px-4 py-1 border-b ">Last Price</th>
           <th className="px-4 py-1 border-b ">
             <button
+              className="relative bg-gray-700 px-4 py-1 rounded-lg hover:bg-gray-600 transition-all"
               onClick={() => {
                 if (sort == "none") {
                   setSort("asc");
@@ -29,6 +30,12 @@ export default function TDesktop({
                 }
               }}
             >
+              <div className="absolute top-0 right-0">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                </span>
+              </div>
               24H Change %age
               {sort == "asc" ? "🔼" : sort == "desc" ? "🔽" : ""}
             </button>
