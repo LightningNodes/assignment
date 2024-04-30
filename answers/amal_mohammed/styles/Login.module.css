@@ -155,6 +155,7 @@
   height: 50px; /* Uniform size for all icons */
   cursor: pointer;
   transition: transform 0.3s ease;
+  filter: brightness(0) invert(1);
 
   &:hover {
     transform: scale(1.1); /* Slight scale effect on hover */
