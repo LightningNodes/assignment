@@ -40,15 +40,10 @@ img {
   height: auto;
 }
 
-
-.table-auto {
-    width: auto; /* Adjust based on your layout */
-  }
-
 .full-table {
-    max-height: 96vh;
+    max-height: calc(95vh - 4rem);
     overflow-y: hidden;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 /* Style for fixed header and scrollable body */
@@ -73,4 +68,8 @@ img {
     border-radius: 20px; /* roundness of the scroll thumb */
     border: 3px solid #1f2937; /* creates padding around scroll thumb */
   }
+
+  /* .adjust-table-height {
+    max-height: calc(95vh - 4rem);
+} */
   

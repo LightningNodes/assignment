@@ -127,70 +127,76 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-sky-900 text-white p-5 flex justify-center">
-      <LogoutButton />
-      <div className="flex flex-col lg:flex-row">
-        {/* Details table */}
-        <div className="mr-8 flex flex-col justify-start">
-          <h1 className="text-3xl font-bold text-center text-cyan-400 mb-10">Crypto Pricing Details</h1>
-          {selectedCrypto && (
-            <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
-              <p><strong>Symbol:</strong> {selectedCrypto.s}</p>
-              <p><strong>Last Price:</strong> ₹{formatNumber(selectedCrypto.c)}</p>
-              <p><strong>24h Change:</strong> {selectedCrypto.P}%</p>
-              <p><strong>24h High:</strong> ₹{formatNumber(selectedCrypto.h)}</p>
-              <p><strong>24h Low:</strong> ₹{formatNumber(selectedCrypto.l)}</p>
-              <p><strong>24h Volume:</strong> {formatNumber(selectedCrypto.v)}</p>
-            </div>
-          )}
+    <div className="min-h-screen bg-sky-900 text-white">
+      {/* Header bar */}
+      <div className="flex justify-between items-center bg-gray-800 p-4">
+        <div className="flex-1 text-center">
+          <h1 className="text-2xl font-bold text-cyan-400">Crypto Rate Dashboard</h1>
         </div>
-
-        {/* Main table */}
-        <div className="full-table shadow-3xl rounded-xl max-w-6xl">
-          <table className="table-scroll w-full text-sm lg:text-base">
-            <thead className="text-lg font-bold text-gray-200 bg-zinc-950 sticky top-0">
-              <tr>
-                <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('s')}>Symbol {sortBy === 's' ? (sortAscending ? '▲' : '▼') : ''}</th>
-                <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('c')}>Last Price {sortBy === 'c' ? (sortAscending ? '▲' : '▼') : ''}</th>
-                <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('P')}>24h Change {sortBy === 'P' ? (sortAscending ? '▲' : '▼') : ''}</th>
-                <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('v')}>24h Volume {sortBy === 'v' ? (sortAscending ? '▲' : '▼') : ''}</th>
-                <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('h')}>24h High {sortBy === 'h' ? (sortAscending ? '▲' : '▼') : ''}</th>
-                <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('l')}>24h Low {sortBy === 'l' ? (sortAscending ? '▲' : '▼') : ''}</th>
-                <th className="px-4 py-3">Share</th>
-                <th className="px-4 py-3">Download</th>
-              </tr>
-            </thead>
-            <tbody className="bg-gray-800 max-h-96 overflow-y-auto">
-              {sortedData.map(([symbol, details]) => (
-                <tr key={symbol} onClick={() => setSelectedCrypto(details)} className="hover:bg-gray-700 cursor-pointer">
-                  <td className="border-b border-gray-700 px-4 py-2">{symbol}</td>
-                  <td className="border-b border-gray-700 px-4 py-2">₹ {formatNumber(details.c)}</td>
-                  <td className="border-b border-gray-700 px-4 py-2">
-                    <span className={`${details.P.startsWith('-') ? 'text-red-400' : 'text-green-400'}`}>
-                      {details.P}% {details.P.startsWith('-') ? '↓' : '↑'}
-                    </span>
-                  </td>
-                  <td className="border-b border-gray-700 px-4 py-2">{formatNumber(details.v)}</td>
-                  <td className="border-b border-gray-700 px-4 py-2">{formatNumber(details.h)}</td>
-                  <td className="border-b border-gray-700 px-4 py-2">{formatNumber(details.l)}</td>
-                  <td className="border-b border-gray-700 px-4 py-2">
-                    <button onClick={() => handleShare(details)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                      Share
-                    </button>
-                  </td>
-                  <td className="border-b border-gray-700 px-4 py-2">
-                    <button onClick={() => downloadData(details)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
-                      <img src="/download_icon.png" alt="Download" className="w-4 h-4" />
-                    </button>
-                  </td>
+        <LogoutButton />
+      </div>
+  
+      {/* Main content area */}
+      <div className="p-5 flex justify-center">
+        <div className="flex flex-col lg:flex-row">
+          {/* Details table */}
+          <div className="mr-8 flex flex-col justify-start">
+            {selectedCrypto && (
+              <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
+                <p><strong>Symbol:</strong> {selectedCrypto.s}</p>
+                <p><strong>Last Price:</strong> ₹{formatNumber(selectedCrypto.c)}</p>
+                <p><strong>24h Change:</strong> {selectedCrypto.P}%</p>
+                <p><strong>24h High:</strong> ₹{formatNumber(selectedCrypto.h)}</p>
+                <p><strong>24h Low:</strong> ₹{formatNumber(selectedCrypto.l)}</p>
+                <p><strong>24h Volume:</strong> {formatNumber(selectedCrypto.v)}</p>
+              </div>
+            )}
+          </div>
+  
+          {/* Main table */}
+          <div className="full-table shadow-2xl rounded-xl max-w-6xl">
+            <table className="table-scroll w-full text-sm lg:text-base">
+              <thead className="text-lg font-bold text-gray-200 bg-zinc-950 sticky top-0 z-50">
+                <tr>
+                  <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('s')}>Symbol {sortBy === 's' ? (sortAscending ? '▲' : '▼') : ''}</th>
+                  <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('c')}>Last Price {sortBy === 'c' ? (sortAscending ? '▲' : '▼') : ''}</th>
+                  <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('P')}>24h Change {sortBy === 'P' ? (sortAscending ? '▲' : '▼') : ''}</th>
+                  <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('v')}>24h Volume {sortBy === 'v' ? (sortAscending ? '▲' : '▼') : ''}</th>
+                  <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('h')}>24h High {sortBy === 'h' ? (sortAscending ? '▲' : '▼') : ''}</th>
+                  <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('l')}>24h Low {sortBy === 'l' ? (sortAscending ? '▲' : '▼') : ''}</th>
+                  <th className="px-4 py-3">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="adjust-table-height bg-gray-800 overflow-y-auto">
+                {sortedData.map(([symbol, details]) => (
+                  <tr key={symbol} onClick={() => setSelectedCrypto(details)} className="hover:bg-gray-700 cursor-pointer">
+                    <td className="border-b border-gray-700 px-4 py-2">{symbol}</td>
+                    <td className="border-b border-gray-700 px-4 py-2">₹ {formatNumber(details.c)}</td>
+                    <td className="border-b border-gray-700 px-4 py-2">
+                      <span className={`${details.P.startsWith('-') ? 'text-red-400' : 'text-green-400'}`}>
+                        {details.P}% {details.P.startsWith('-') ? '↓' : '↑'}
+                      </span>
+                    </td>
+                    <td className="border-b border-gray-700 px-4 py-2">{formatNumber(details.v)}</td>
+                    <td className="border-b border-gray-700 px-4 py-2">{formatNumber(details.h)}</td>
+                    <td className="border-b border-gray-700 px-4 py-2">{formatNumber(details.l)}</td>
+                    <td className="border-b border-gray-700 px-4 py-2 flex justify-start items-center space-x-2">
+                      <button onClick={() => handleShare(details)} className="p-1">
+                        <img src="/send.svg" alt="Share" className="invert brightness-0 opacity-30 hover:scale-110 hover:opacity-100 w-6 h-6" />
+                      </button>
+                      <button onClick={() => downloadData(details)} className="p-1">
+                        <img src="/download.svg" alt="Download" className="invert brightness-0 opacity-30 hover:scale-110 hover:opacity-100 w-6 h-6" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Dashboard;

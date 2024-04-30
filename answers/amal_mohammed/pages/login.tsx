@@ -90,15 +90,16 @@ function Login() {
           </div>
           <a href="#" className={styles.login__forgot}>Forgot Password?</a>
         </div>
+        <div className={styles.login__register}>
+          Don't have an account? <a href="#">Register</a>
+        </div>
         <div className={styles.iconContainer}>
           <img src="/google.svg" alt="Google login" className={styles.authIcon} onClick={() => handleAuth(googleProvider)} />
           <img src="/github.svg" alt="GitHub login" className={styles.authIcon} onClick={() => handleAuth(githubProvider)} />
           <img src="/facebook.svg" alt="Facebook login" className={styles.authIcon} onClick={() => handleAuth(facebookProvider)} />
           <img src="/microsoft.svg" alt="Microsoft login" className={styles.authIcon} onClick={() => handleAuth(microsoftProvider)} />
         </div>
-        <div className={styles.login__register}>
-          Don't have an account? <a href="#">Register</a>
-        </div>
+
       </form>
     </div>
   );
