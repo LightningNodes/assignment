@@ -1,0 +1,76 @@
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(0, 0%, 0%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --h1-font-size: 2rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .813rem;
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body, input, button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+.table-auto {
+    width: auto; /* Adjust based on your layout */
+  }
+
+.full-table {
+    max-height: 96vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+/* Style for fixed header and scrollable body */
+.table-scroll {
+    display: block;
+    max-height: 100vh;  /* Adjust according to your preference */
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  /* Styling for a modern-looking scrollbar */
+  .table-scroll::-webkit-scrollbar {
+    width: 12px; /* scrollbar width */
+  }
+  
+  .table-scroll::-webkit-scrollbar-track {
+    background: #181d24; /* color of the tracking area */
+  }
+  
+  .table-scroll::-webkit-scrollbar-thumb {
+    background-color: #778394; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid #1f2937; /* creates padding around scroll thumb */
+  }
+  
