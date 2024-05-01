@@ -1,22 +1,16 @@
 // pages/signup.tsx
 import React from 'react';
 import styles from '../styles/Login.module.css'; // Reusing the same styles as login
-import { auth, googleProvider, githubProvider, facebookProvider, microsoftProvider } from '../utils/firebase-config';
-import { AuthProvider, signInWithPopup } from 'firebase/auth';
+import { googleProvider, githubProvider, facebookProvider, microsoftProvider } from '../utils/firebase-config';
 import { useRouter } from 'next/router';
+import AuthProviderButtons from '../components/AuthProviderButtons';
+import { useAuthHandler } from '../utils/useAuthHandler';
+import FormDivider from '../components/FormDivider';
+import InputField from '../components/InputField';
 
 function Signup() {
   const router = useRouter();
-
-  const handleAuth = (provider: AuthProvider) => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        router.push('/dashboard');
-      })
-      .catch((error) => {
-        console.error('Authentication error:', error);
-      });
-  };
+  const handleAuth = useAuthHandler();
 
   return (
     <div className={styles.login}>
@@ -24,39 +18,24 @@ function Signup() {
       <form className={styles.login__form}>
         <h1 className={styles.login__title}>Signup</h1>
         <div className={styles.login__inputs}>
-          <div className={styles.login__box}>
-            <input type="email" placeholder="Email ID" required className={styles.login__input} />
-            <i className="ri-mail-fill"></i>
-          </div>
-          <div className={styles.login__box}>
-            <input type="password" placeholder="Create Password" required className={styles.login__input} />
-            <i className="ri-lock-2-fill"></i>
-          </div>
-          <div className={styles.login__box}>
-            <input type="password" placeholder="Confirm Password" required className={styles.login__input} />
-            <i className="ri-lock-2-fill"></i>
-          </div>
+          <InputField type="email" placeholder="Email ID" iconClass="ri-mail-fill" />
+          <InputField type="password" placeholder="Create Password" iconClass="ri-lock-2-fill" />
+          <InputField type="password" placeholder="Confirm Password" iconClass="ri-lock-2-fill" />
         </div>
-
         <button type="submit" className={styles.login__button}>Signup</button>
-
         <div className={styles.login__register}>
         Already have an account? <a href="#" onClick={(e) => { e.preventDefault(); router.push('/login'); }}>Login</a>
         </div>
-
-        <div className={styles.login__divider}>
-          <span className={styles.login__divider_bar}></span> {/* Left bar */}
-          <span className={styles.login__divider_text}>Or</span> {/* Text */}
-          <span className={styles.login__divider_bar}></span> {/* Right bar */}
-        </div>
-
-        <div className={styles.iconContainer}>
-          <img src="/google.svg" alt="Google signup" className={styles.authIcon} onClick={() => handleAuth(googleProvider)} />
-          <img src="/github.svg" alt="GitHub signup" className={styles.authIcon} onClick={() => handleAuth(githubProvider)} />
-          <img src="/facebook.svg" alt="Facebook signup" className={styles.authIcon} onClick={() => handleAuth(facebookProvider)} />
-          <img src="/microsoft.svg" alt="Microsoft signup" className={styles.authIcon} onClick={() => handleAuth(microsoftProvider)} />
-        </div>
-
+        <FormDivider />
+        <AuthProviderButtons 
+          handleAuth={handleAuth}
+          providers={{
+            google: googleProvider,
+            github: githubProvider,
+            facebook: facebookProvider,
+            microsoft: microsoftProvider
+          }}
+        />
       </form>
     </div>
   );
