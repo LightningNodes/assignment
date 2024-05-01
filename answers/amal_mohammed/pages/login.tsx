@@ -31,6 +31,7 @@ function Login() {
     const firebaseError = error as any;
 
     if (firebaseError.code === 'auth/account-exists-with-different-credential') {
+      console.log("Duplicate Error")
         // Fetch the sign-in methods for this email
         const methods = await fetchSignInMethodsForEmail(auth, firebaseError.email);
         if (methods.length > 0) {
@@ -90,9 +91,20 @@ function Login() {
           </div>
           <a href="#" className={styles.login__forgot}>Forgot Password?</a>
         </div>
+
+        <button type="submit" className={styles.login__button}>Login</button>
+
         <div className={styles.login__register}>
           Don't have an account? <a href="#">Register</a>
         </div>
+
+        <div className={styles.login__divider}>
+          <span className={styles.login__divider_bar}></span> {/* Left bar */}
+          <span className={styles.login__divider_text}>Or</span> {/* Text */}
+          <span className={styles.login__divider_bar}></span> {/* Right bar */}
+        </div>
+
+
         <div className={styles.iconContainer}>
           <img src="/google.svg" alt="Google login" className={styles.authIcon} onClick={() => handleAuth(googleProvider)} />
           <img src="/github.svg" alt="GitHub login" className={styles.authIcon} onClick={() => handleAuth(githubProvider)} />

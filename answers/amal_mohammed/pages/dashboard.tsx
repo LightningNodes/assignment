@@ -11,13 +11,11 @@ import LogoutButton from '../components/LogoutButton';
 
 const Dashboard = () => {
     const user = useRequireAuth();
-    console.log("back to dash")
     const [cryptoData, setCryptoData] = useState<Record<string, CryptoDetail>>({});
     const [selectedCrypto, setSelectedCrypto] = useState<CryptoDetail | null>(null);
     const [sortBy, setSortBy] = useState<string>('P');
     const [sortAscending, setSortAscending] = useState<boolean>(true);
     const handleTickerUpdate = useCallback((data: CryptoDetail) => {
-        console.log("handleTicker")
         setCryptoData((prevData) => ({
             ...prevData,
             [data.s]: data

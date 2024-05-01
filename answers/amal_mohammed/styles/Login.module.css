@@ -129,6 +129,47 @@
   text-decoration: underline;
 }
 
+.login__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  margin: 2rem auto;
+}
+
+.login__divider_bar {
+  height: 1px;
+  background-color: var(--white-color);
+  flex-grow: 1;  /* Allows the bars to expand */
+  margin: 0 10px; /* Provides spacing around the 'Or' text */
+}
+
+.login__divider_text {
+  padding: 0 10px;
+  color: var(--white-color);
+  font-size: var(--small-font-size);
+  font-weight: bold;
+}
+
+
+.iconContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.authIcon {
+width: 50px; /* Uniform size for all icons */
+height: 50px; /* Uniform size for all icons */
+cursor: pointer;
+transition: transform 0.3s ease;
+filter: brightness(0) invert(1);
+
+&:hover {
+  transform: scale(1.1); /* Slight scale effect on hover */
+}
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices */
 @media screen and (min-width: 576px) {
@@ -141,23 +182,5 @@
   }
   .login__title {
     margin-bottom: 2rem;
-  }
-}
-
-.iconContainer {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-}
-  
-.authIcon {
-  width: 50px; /* Uniform size for all icons */
-  height: 50px; /* Uniform size for all icons */
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  filter: brightness(0) invert(1);
-
-  &:hover {
-    transform: scale(1.1); /* Slight scale effect on hover */
   }
 }
