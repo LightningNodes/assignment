@@ -95,7 +95,7 @@ function Login() {
         <button type="submit" className={styles.login__button}>Login</button>
 
         <div className={styles.login__register}>
-          Don't have an account? <a href="#">Register</a>
+        Don't have an account? <a href="#" onClick={(e) => { e.preventDefault(); router.push('/signup'); }}>Register</a>
         </div>
 
         <div className={styles.login__divider}>
