@@ -3,10 +3,10 @@ import React from 'react';
 import styles from '../styles/Login.module.css'; // Reusing the same styles as login
 import { googleProvider, githubProvider, facebookProvider, microsoftProvider } from '../utils/firebase-config';
 import { useRouter } from 'next/router';
-import AuthProviderButtons from '../components/AuthProviderButtons';
+import AuthProviderButtons from '../components/login_signup/AuthProviderButtons';
 import { useAuthHandler } from '../utils/useAuthHandler';
-import FormDivider from '../components/FormDivider';
-import InputField from '../components/InputField';
+import FormDivider from '../components/login_signup/FormDivider';
+import InputField from '../components/login_signup/InputField';
 
 function Signup() {
   const router = useRouter();

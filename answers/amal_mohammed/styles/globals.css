@@ -25,6 +25,17 @@
   margin: 0;
 }
 
+.p-5.flex {
+  align-items: flex-start;  /* Align items at the start of the flex container */
+}
+
+.crypto__details {
+  height: auto;
+  min-height: 0; /* Ensures it doesn't take more space than its content requires */
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
 body, input, button {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
@@ -43,6 +54,7 @@ img {
 .full-table {
     overflow-y: hidden;
     overflow-x: auto;
+    max-width: 100%;
 }
 
 /* Style for fixed header and scrollable body */
@@ -50,23 +62,23 @@ img {
     display: block;
     max-height: calc(95vh - 4rem);
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
   }
   
-  /* Styling for a modern-looking scrollbar */
-  .table-scroll::-webkit-scrollbar {
-    width: 12px; /* scrollbar width */
-  }
-  
-  .table-scroll::-webkit-scrollbar-track {
-    background: #181d24; /* color of the tracking area */
-  }
-  
-  .table-scroll::-webkit-scrollbar-thumb {
-    background-color: #778394; /* color of the scroll thumb */
-    border-radius: 20px; /* roundness of the scroll thumb */
-    border: 3px solid #1f2937; /* creates padding around scroll thumb */
-  }
+/* Styling for a modern-looking scrollbar */
+.table-scroll::-webkit-scrollbar {
+  width: 12px; /* scrollbar width */
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  background: #181d24; /* color of the tracking area */
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background-color: #778394; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #1f2937; /* creates padding around scroll thumb */
+}
 
   /* .adjust-table-height {
     max-height: calc(95vh - 4rem);

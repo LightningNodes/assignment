@@ -1,7 +1,7 @@
 // components/__tests__/SelectedCryptoDetails.test.tsx
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import SelectedCryptoDetails from '../SelectedCryptoDetails';
+import SelectedCryptoDetails from '../dashboard/SelectedCryptoDetails';
 
 describe('SelectedCryptoDetails', () => {
   const mockCryptoDetail = {

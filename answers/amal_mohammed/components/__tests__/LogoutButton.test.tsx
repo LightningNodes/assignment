@@ -2,7 +2,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import LogoutButton from '../LogoutButton';
+import LogoutButton from '../dashboard/LogoutButton';
 import { getAuth, signOut, Auth } from 'firebase/auth';
 import { useRouter, NextRouter } from 'next/router';
 

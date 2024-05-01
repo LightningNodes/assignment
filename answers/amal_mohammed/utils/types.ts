@@ -7,3 +7,10 @@ export interface CryptoDetail {
     l: string;  // 24-hour low
     v: string;  // 24-hour volume
 }
+
+export interface User {
+    id: string;      // Unique identifier for the user
+    name: string;    // Full name or username of the user
+    email: string;   // Email address of the user
+    // Add other relevant fields based on your specific requirements
+  }

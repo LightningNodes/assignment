@@ -1,5 +1,4 @@
 // utils/sorting.ts
-import { Dispatch, SetStateAction } from 'react';
 import { CryptoDetail } from './types';
 
 function isKeyOfCryptoDetail(key: any): key is keyof CryptoDetail {
@@ -15,13 +14,4 @@ export const sortCryptoData = (cryptoData: Record<string, CryptoDetail>, sortBy:
         }
         return 0;
     });
-};
-
-export const handleSort = (key: string, sortBy: string, setSortBy: Dispatch<SetStateAction<string>>, sortAscending: boolean, setSortAscending: Dispatch<SetStateAction<boolean>>): void => {
-    if (sortBy === key) {
-        setSortAscending(!sortAscending);
-    } else {
-        setSortBy(key);
-        setSortAscending(true);
-    }
 };

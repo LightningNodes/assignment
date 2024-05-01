@@ -1,6 +1,6 @@
 // components/ActionButtons.tsx
 import React from 'react';
-import { CryptoDetail } from '../utils/types';
+import { CryptoDetail } from '../../utils/types';
 
 interface ActionButtonsProps {
   data: CryptoDetail;

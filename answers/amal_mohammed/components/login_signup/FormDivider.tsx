@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/Login.module.css';
+import styles from '../../styles/Login.module.css';
 
 const FormDivider: React.FC = () => (
   <div className={styles.login__divider}>
