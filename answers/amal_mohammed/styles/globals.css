@@ -41,7 +41,6 @@ img {
 }
 
 .full-table {
-    max-height: calc(95vh - 4rem);
     overflow-y: hidden;
     overflow-x: auto;
 }
@@ -49,7 +48,7 @@ img {
 /* Style for fixed header and scrollable body */
 .table-scroll {
     display: block;
-    max-height: 100vh;  /* Adjust according to your preference */
+    max-height: calc(95vh - 4rem);
     overflow-y: auto;
     overflow-x: hidden;
   }
