@@ -67,7 +67,7 @@ img {
   
 /* Styling for a modern-looking scrollbar */
 .table-scroll::-webkit-scrollbar {
-  width: 12px; /* scrollbar width */
+  width: auto; /* scrollbar width */
 }
 
 .table-scroll::-webkit-scrollbar-track {
@@ -76,8 +76,7 @@ img {
 
 .table-scroll::-webkit-scrollbar-thumb {
   background-color: #778394; /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
-  border: 3px solid #1f2937; /* creates padding around scroll thumb */
+  border-radius: 10px; /* roundness of the scroll thumb */
 }
 
   /* .adjust-table-height {
