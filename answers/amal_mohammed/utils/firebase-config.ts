@@ -11,9 +11,23 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
-// Check if a Firebase instance already exists; if not, create one
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const auth = getAuth(app);
+let app;
+let auth;
+
+// Only initialize Firebase and its services if not running in a test environment
+if (process.env.NODE_ENV !== 'test') {
+    app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+    auth = getAuth(app);
+} else {
+    // Mock or use placeholders for Firebase services in a test environment
+    auth = {
+        signInWithRedirect: jest.fn(),
+        signInWithEmailAndPassword: jest.fn(),
+        createUserWithEmailAndPassword: jest.fn(),
+        signOut: jest.fn(),
+        onAuthStateChanged: jest.fn(),
+    };
+}
 
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();

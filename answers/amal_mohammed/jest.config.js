@@ -5,6 +5,7 @@ module.exports = {
     moduleNameMapper: {
       // Handle module aliases (if you have them in your tsconfig.json)
       '^@components/(.*)$': '<rootDir>/components/$1',
+      '^@utils/firebase-config$': '<rootDir>/__mocks__/firebase-auth-mock.js',
       '^@utils/(.*)$': '<rootDir>/utils/$1',
       '\\.(css|less|scss|sass)$': 'identity-obj-proxy' // Mocking CSS imports
     },

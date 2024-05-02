@@ -1,6 +1,6 @@
 // components/SelectedCryptoDetails.tsx
 import React from 'react';
-import { CryptoDetail } from '../../utils/types';  // Ensure the path to types.ts is correct
+import { CryptoDetail } from '../../utils/types';
 
 interface CryptoDetailsProps {
   crypto: CryptoDetail;

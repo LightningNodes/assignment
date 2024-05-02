@@ -11,6 +11,5 @@ export interface CryptoDetail {
 export interface User {
     id: string;      // Unique identifier for the user
     name: string;    // Full name or username of the user
-    email: string;   // Email address of the user
-    // Add other relevant fields based on your specific requirements
+    email: string; 
   }

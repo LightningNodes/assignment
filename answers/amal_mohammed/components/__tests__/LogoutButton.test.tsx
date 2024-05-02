@@ -49,7 +49,7 @@ describe('LogoutButton', () => {
   it('handles logout errors and does not navigate', async () => {
     const error = new Error('Logout failed');
     mockSignOut.mockImplementationOnce(() => Promise.reject(error));
-    console.error = jest.fn(); // Optionally mock console.error if you want to assert on it
+    console.error = jest.fn();
 
     render(<LogoutButton />);
     fireEvent.click(screen.getByRole('button', { name: /logout/i }));

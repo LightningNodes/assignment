@@ -65,9 +65,8 @@ img {
     overflow-x: auto;
   }
   
-/* Styling for a modern-looking scrollbar */
 .table-scroll::-webkit-scrollbar {
-  width: auto; /* scrollbar width */
+  width: auto;
 }
 
 .table-scroll::-webkit-scrollbar-track {
@@ -78,8 +77,3 @@ img {
   background-color: #778394; /* color of the scroll thumb */
   border-radius: 10px; /* roundness of the scroll thumb */
 }
-
-  /* .adjust-table-height {
-    max-height: calc(95vh - 4rem);
-} */
-  

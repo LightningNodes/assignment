@@ -6,7 +6,7 @@ import SelectedCryptoDetails from '../components/dashboard/SelectedCryptoDetails
 import Header from '../components/dashboard/Header';
 import SortableHeader from '../components/dashboard/SortableTableHeader';
 import TableBody from '../components/dashboard/TableBody';
-import { formatNumber } from '../utils/formatting'; // Assuming this utility is correctly implemented
+import { formatNumber } from '../utils/formatting';
 
 const Dashboard = () => {
     const user = useRequireAuth();
@@ -19,10 +19,6 @@ const Dashboard = () => {
         selectedCrypto,
         setSelectedCrypto
     } = useCryptoData(user);
-
-    if (!user) {
-        return <p>Loading...</p>;
-    }
 
     const headers = [
         { text: "Symbol", key: "s" },

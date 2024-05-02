@@ -20,6 +20,8 @@
       }
     ],
     "paths": {
+      "@utils/*": ["utils/*"],
+      "@components/*": ["components/*"],
       "@/*": ["./*"]
     }
   },
