@@ -1,0 +1,73 @@
+@keyframes gradientWave {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+  
+  .container {
+    background: linear-gradient(135deg, white, #010111, #020225, white);
+    background-size: 400% 400%; /* Extends the gradient well beyond the container size */
+    animation: gradientWave 15s ease infinite; /* Applies the animation */
+    color:black; /* Neon blue color */
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    background-color: white; /* Setting navbar background to pure white */
+  }
+  
+  .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #39ff14; /* Neon blue color */
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #ccc; /* Dim black for normal state */
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transition for color and shadow */
+  }
+  
+  .link:hover, .link:focus {
+    color: #ffffff; /* Bright black on hover */
+    text-shadow: 
+      0 0 8px #ffffff, /* Adding glow effect */
+      0 0 16px #ffffff; /* Increasing glow radius */
+  }
+  
+  
+  .heading {
+    font-size: 2.5rem;
+    margin-top: 80px; /* Adjust top margin to account for navbar */
+  }
+  
+  .message {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    margin-top: 10px;
+  }
+  
