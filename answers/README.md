@@ -13,7 +13,7 @@ Run the App: Use npm run dev to start the app.
 
 
 Deployment
-The application is deployed on Netlify and can be accessed at:
+The application is deployed on Netlify and can be accessed at: https://pi42-priya.vercel.app/
 
 Contact information:
 Priya Tomar
