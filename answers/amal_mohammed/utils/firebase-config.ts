@@ -1,6 +1,13 @@
-// utils/firebase-config.js
-import { initializeApp, getApp, getApps } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, OAuthProvider } from 'firebase/auth';
+// utils/firebase-config.ts
+import { initializeApp, getApp, getApps, FirebaseApp } from 'firebase/app';
+import { 
+    getAuth, 
+    Auth,
+    GoogleAuthProvider, 
+    GithubAuthProvider, 
+    FacebookAuthProvider, 
+    OAuthProvider
+} from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -11,22 +18,17 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
-let app;
-let auth;
+let app: FirebaseApp;
+let auth: Auth;
 
-// Only initialize Firebase and its services if not running in a test environment
 if (process.env.NODE_ENV !== 'test') {
     app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
     auth = getAuth(app);
 } else {
-    // Mock or use placeholders for Firebase services in a test environment
-    auth = {
-        signInWithRedirect: jest.fn(),
-        signInWithEmailAndPassword: jest.fn(),
-        createUserWithEmailAndPassword: jest.fn(),
-        signOut: jest.fn(),
-        onAuthStateChanged: jest.fn(),
-    };
+    // Properly typed mock
+    import('./auth-mock').then(({ authMock }) => {
+        auth = authMock;
+    });
 }
 
 const googleProvider = new GoogleAuthProvider();

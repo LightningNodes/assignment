@@ -1,7 +1,7 @@
 // pages/__tests__/login.test.tsx
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Login from '../login';
+import Login from '../pages/login';
 
 // Correctly mock the entire module that contains the useAuthHandler hook
 jest.mock('@utils/useAuthHandler', () => ({

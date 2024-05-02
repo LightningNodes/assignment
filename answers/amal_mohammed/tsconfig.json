@@ -14,6 +14,7 @@
     "incremental": true,
     "typeRoots": ["./node_modules/@types"],  // Specify where to look for type definitions
     "types": ["jest"],  // Explicitly include Jest types
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"

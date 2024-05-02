@@ -1,4 +1,4 @@
-// mocks/firebase-auth-mock.js
+// mocks/firebase-auth-mock.ts
 import { jest } from '@jest/globals';
 
 const mockAuth = jest.fn(() => ({
