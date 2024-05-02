@@ -1,0 +1,79 @@
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(0, 0%, 0%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --h1-font-size: 2rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .813rem;
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.p-5.flex {
+  align-items: flex-start;  /* Align items at the start of the flex container */
+}
+
+.crypto__details {
+  height: auto;
+  min-height: 0; /* Ensures it doesn't take more space than its content requires */
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+body, input, button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.full-table {
+    overflow-y: hidden;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+/* Style for fixed header and scrollable body */
+.table-scroll {
+    display: block;
+    max-height: calc(95vh - 4rem);
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+  
+.table-scroll::-webkit-scrollbar {
+  width: auto;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  background: #181d24; /* color of the tracking area */
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background-color: #778394; /* color of the scroll thumb */
+  border-radius: 10px; /* roundness of the scroll thumb */
+}
