@@ -1,0 +1,84 @@
+@keyframes gradientWave {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.container {
+  background: linear-gradient(135deg, black, #010111, #020225, black);
+  background: linear-gradient(
+    135deg,
+    rgb(62, 50, 79),
+    #19194b,
+    #2a2a60,
+    rgb(61, 55, 151)
+  );
+  background-size: 400% 400%;
+  animation: gradientWave 15s ease infinite;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  position: absolute;
+  top: 0;
+  background: linear-gradient(
+    135deg,
+    rgb(37, 26, 45),
+    #0e0e38,
+    #17172e,
+    rgb(44, 40, 107)
+  );
+  background-color: black;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #39ff14;
+}
+
+.navLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transition for color and shadow */
+}
+
+.link:hover,
+.link:focus {
+  color: #ffffff; /* Bright white on hover */
+  text-shadow: 0 0 8px #ffffff, /* Adding glow effect */ 0 0 16px #ffffff; /* Increasing glow radius */
+}
+
+.heading {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-top: 80px;
+}
+.message {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  color: #ffffff;
+}
