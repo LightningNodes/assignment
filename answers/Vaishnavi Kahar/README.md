@@ -19,6 +19,14 @@ Access the live application at: [link](https://6635bf76669e3d9fae315a4b--comfy-q
 - Firebase
 - Websocket
 
+## Test cases:
+- Verify successful authentication with valid credentials and display alert for authentication failure.
+- Confirm display of crypto contract data after authentication.
+- Test real-time updates of crypto contract data via websockets.
+- Validate sorting of crypto contracts based on 24-hour change percentage.
+- Test sharing of crypto contract details via WhatsApp.
+
+
 ## Getting Started
 
 ```bash
