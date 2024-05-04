@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+    <div id="error-popup" class="error-popup">
+        <i class="fas fa-times close-icon" onclick="closePopup()"></i>
+        <span class="error-message">{{ error_message }}</span>
+    </div>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="password">Password(minimum 6 characters):</label>
+            <input type="password" id="password" name="password" required><br>
+            <div class="submit-button">
+                <button type="submit">Sign Up</button>
+            </div>
+            <div class="ques">Already have an account?, <a href="{% url 'login' %}">LOGIN</a></div>
+            
+        </form>
+    </div>
+    
+    <script src="../static/js/error.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  /* color: white; */
+  background-color: darkblue;
+}
+
+p {
+  color: white;
+  text-align: center ;
+}
+
+#crypto-data {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#crypto-data td, #crypto-data th {
+  border: 2px solid black;
+  padding: 8px;
+}
+
+#crypto-data {background-color: #f2f2f2;}
+
+#crypto-data tr:hover {background-color: #ddd;}
+
+#crypto-data th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: blue;
+  color: white;
+}
+
+.sort-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

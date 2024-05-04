@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: darkblue;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px 10px 20px;
+    width: 300px;
+}
+
+h2, a {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label{
+    color: #fff;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.ques {
+    color: #fff;
+    padding: 15px 40px 10px 10px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 16px);
+    padding: 14px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px 30px 10px 6px;
+    align-items: center;
+}
+
+button {
+    width: 100%;
+    padding: 10px ;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-popup {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: lightcoral;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 9999; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.error-message {
+    padding: 10px;
+}
+
+/* CSS for close button in error popup */
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 10px;
+    color: #555; 
+}
+
+.close-icon:hover {
+    color: #333; 
+}
