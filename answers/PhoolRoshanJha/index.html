@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./img/icon.ico" type="image/x-icon" />
+  <title>Login || MerchBox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&family=Raleway:wght@500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+  <link rel="stylesheet" href="./css/login.css" />
+</head>
+
+<body>
+  <div class="notification">
+    <div class="success login-success response hide">
+      <i class="lar la-check-circle"></i>
+      <p>Login Success!!!!</p>
+    </div>
+    <div class="error login-error response hide">
+      <i class="las la-exclamation-circle"></i>
+      <p id="login-error-message">Login Error, Please Retry!!</p>
+    </div>
+    <div class="success reg-success response hide">
+      <i class="lar la-check-circle"></i>
+      <p>Registration Success!!!!</p>
+    </div>
+    <div class="error reg-error response hide">
+      <i class="las la-exclamation-circle"></i>
+      <p class="reg-error-message">Registration Failed, Please Retry!!</p>
+    </div>
+  </div>
+  <div class="home_container">
+    <div class="bottom_container">
+      <div class="form_container">
+        <div class="card-container">
+          <div class="card flip-card_login">
+            <div class="flipcard_front">
+              <div class="login_form_container">
+                <h3 class="login_h3">Login</h3>
+                <form action="#" class="login_form">
+                  <div class="login_form_container">
+                    <div class="login_email_container">
+                      <label for="login-email">Email </label>
+                      <input type="email" name="loginEmail" placeholder="Enter your email address" class="input_box"
+                        required />
+                    </div>
+                    <div class="login_password_container">
+                      <label for="login-password">Password</label>
+                      <input type="password" name="loginPassword" placeholder="Enter your password" class="input_box"
+                        required />
+                    </div>
+                    <div class="login_btn_container">
+                      <button type="submit" class="btn login_btn">
+                        Login <span class="btn_arrow">&rarr;</span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <div class="register_link_container">
+                  <p id="register-link">
+                    Don't have an account yet?
+                    <a href="#" id="active-registration-btn" class="switch_to_register">Register</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card flip-card_register">
+            <div class="flipcard_back">
+              <div class="register_form">
+                <div class="register_form-1_container">
+                  <h3 class="register_h3">Register</h3>
+                  <form action="#" class="reg_form">
+                    <div class="register_form-1_container">
+                      <div class="name_container">
+                        <label for="register-name">Name*</label>
+                        <input type="text" name="registerName" placeholder="Enter your name" class="input_box"
+                          required />
+                      </div>
+                      <div class="register_mail_container">
+                        <label for="register-email">Email*</label>
+                        <input type="email" name="registerEmail" placeholder="Enter your email address"
+                          class="input_box" required />
+                      </div>
+                      <div class="next_btn next_btn_container">
+                        <a href="#" class="btn btn-next">Next <span class="btn_arrow">&rarr;</span></a>
+                      </div>
+                    </div>
+                    <div class="register_form-2_container">
+                      <div class="register_password_container">
+                        <label for="register-password">Password*</label>
+                        <input type="password" name="registerPassword" placeholder="Enter your password"
+                          class="input_box" required />
+                      </div>
+                      <div class="confirm_password_container">
+                        <label for="register-confirm-password">Confirm Password*</label>
+                        <input type="password" name="registerConfirmPassword" placeholder="ReEnter your password"
+                          class="input_box" required />
+                      </div>
+                      <div class="Register_btn_container">
+                        <button type="submit" class="btn Register_btn">
+                          Register
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="login-link_container">
+                    <p id="Login-link">
+                      Already have an account ?
+                      <a href="#" class="switch_to_login"> Login</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/login.js"></script>
+</body>
+
+</html>
