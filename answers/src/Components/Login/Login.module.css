@@ -1,0 +1,119 @@
+@keyframes gradientWave {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+  
+  .container {
+    background: #333131;
+    background-size: 400% 400%; /* Extends the gradient well beyond the container size */
+    animation: gradientWave 15s ease infinite; /* Applies the animation */
+    height: 100vh; /* Full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .innerBox {
+    text-align: center;
+    min-width: 480px;
+    height: fit-content;
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.05); /* More transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: subtle border */
+    backdrop-filter: blur(8px) saturate(180%); /* Increased blur and saturation for depth */
+    -webkit-backdrop-filter: blur(8px) saturate(180%); /* For Safari */
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: white; /* Adjust text color for better visibility on a lighter background */
+  }
+  
+  
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer .error {
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: #ff3300;
+  text-align: center;
+}
+
+@keyframes gradientWaveButton {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.footer button {
+  outline: none;
+  border: none;
+  background-size: 200% 200%; /* Larger background size for more pronounced gradient */
+  animation: gradientWaveButton 3s linear infinite; /* Adjusted duration to suit button size */
+  background: transparent;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 16px;
+  width: 100%;
+  transition: 100ms;
+  cursor: pointer;
+  border: 1px solid white;
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); Optional: adds depth */
+}
+
+.footer button:disabled {
+  background-color: gray !important;
+  animation: none; /* Stops the animation when the button is disabled */
+}
+
+.footer button:hover {
+  /* This will override the gradient. If you want gradient on hover, adjust the gradient colors or parameters */
+}
+
+.login-button:hover{
+  color: #ffffff; /* Bright white on hover */
+  /* box-shadow: 0 0 8px #ff6601; */
+
+}
+ 
+
+.footer p {
+  font-weight: 700;
+  color: white;
+  
+}
+
+.footer p span a {
+  font-weight: bold;
+  color: #afadad;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.footer>button:hover{
+  color: #ffffff; /* Bright white on hover */
+  box-shadow: 0 0 8px #ff6601;
+}
