@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Contracts</title>
+    <style>
+      body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: #fff;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e1e1e1;
+}
+
+    </style>
+    <script>
+        // Function to establish a WebSocket connection
+        function connectWebSocket() {
+            // WebSocket URL for the server
+            const socketURL = "wss://fawss.pi42.com/socket.io/?EIO=4&transport=websocket";
+            
+            // Create a new WebSocket connection
+            const socket = new WebSocket(socketURL);
+
+            // When the WebSocket connection is opened
+            socket.onopen = () => {
+                console.log('WebSocket connection established.');
+                
+                // Send the number 40 to the server
+                socket.send("40");
+            };
+
+            // When a message is received from the server
+            socket.onmessage = (event) => {
+                console.log('Message from server:', event.data);
+
+                // Find the index where the useful data tuple starts
+                const startIndex = event.data.indexOf('["allContractDetails"');
+
+                // Extract the data tuple containing contract details
+                const dataString = event.data.substring(startIndex);
+
+                // Parse the data tuple as JSON
+                const rawData = JSON.parse(dataString);
+
+                // Get the table element to display the data
+                const table = document.getElementById("resultTable");
+
+                // Iterate over each symbol and its details
+                rawData.forEach((symbolData) => {
+                    for (const symbolName in symbolData) {
+                        if (symbolData.hasOwnProperty(symbolName)) {
+                            const rowData = symbolData[symbolName];
+                            if (rowData.lastPrice !== undefined ||
+                                rowData.marketPrice !== undefined ||
+                                rowData.priceChangePercent !== undefined ||
+                                rowData.baseAssetVolume !== undefined) {
+                                // Find existing row for the symbol if it exists
+                                const existingRow = document.querySelector(`#resultTable tr[data-symbol="${symbolName}"]`);
+                                if (existingRow) {
+                                    existingRow.cells[1].innerHTML = rowData.lastPrice !== undefined ? rowData.lastPrice : '';  // Update last price in the second cell
+                                    existingRow.cells[2].innerHTML = rowData.marketPrice !== undefined ? rowData.marketPrice : '';  // Update market price in the third cell
+                                    existingRow.cells[3].innerHTML = rowData.priceChangePercent !== undefined ? rowData.priceChangePercent : '';  // Update price change percent in the fourth cell
+                                    existingRow.cells[4].innerHTML = rowData.baseAssetVolume !== undefined ? rowData.baseAssetVolume : '';  // Update base asset volume in the fifth cell
+                                } else {
+                                    // Insert a new row for the symbol
+                                    const newRow = table.insertRow();  // Insert a new row in the table
+                                    newRow.setAttribute('data-symbol', symbolName);  // Set data attribute for the symbol
+                                    newRow.insertCell(0).innerHTML = symbolName;  // Insert symbol name in the first cell
+                                    newRow.insertCell(1).innerHTML = rowData.lastPrice !== undefined ? rowData.lastPrice : '';  // Insert last price in the second cell
+                                    newRow.insertCell(2).innerHTML = rowData.marketPrice !== undefined ? rowData.marketPrice : '';  // Insert market price in the third cell
+                                    newRow.insertCell(3).innerHTML = rowData.priceChangePercent !== undefined ? rowData.priceChangePercent : '';  // Insert price change percent in the fourth cell
+                                    newRow.insertCell(4).innerHTML = rowData.baseAssetVolume !== undefined ? rowData.baseAssetVolume : '';  // Insert base asset volume in the fifth cell
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            // When an error occurs in the WebSocket connection
+            socket.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
+
+            // When the WebSocket connection is closed
+            socket.onclose = () => {
+                console.log('WebSocket connection closed.');
+            };
+        }
+    </script>
+</head>
+<body>
+    <h1>WebSocket Example</h1>
+    <button onclick="connectWebSocket()">Connect WebSocket</button>
+    <table id="resultTable" border="1">
+        <tr>
+            <th>Symbol Name</th>
+            <th>Last Price</th>
+            <th>Market Price</th>
+            <th>Price Change Percent</th>
+            <th>Base Asset Volume</th>
+        </tr>
+    </table>
+</body>
+</html>
