@@ -1,0 +1,70 @@
+.container {
+  background-color: rgb(29, 33, 37);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerBox {
+  min-width: 530px;
+  width: fit-content;
+  background-color: black;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px) saturate(180%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: white;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer .error {
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: #ff3300;
+  text-align: center;
+}
+
+.footer button {
+  outline: none;
+  border: none;
+  background-color: rgb(29, 33, 37);
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 16px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer button:disabled {
+  background-color: gray !important;
+}
+
+.footer button:hover {
+  background-color: gray;
+}
+
+.footer p {
+  font-weight: 700;
+  color: white;
+}
+
+.footer p span a {
+  font-weight: bold;
+  color: #afadad;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  text-decoration: none;
+}

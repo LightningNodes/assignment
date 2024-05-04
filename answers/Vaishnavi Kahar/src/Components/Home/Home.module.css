@@ -1,0 +1,57 @@
+.container {
+  background-color: rgb(29, 33, 37);
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  background-color: black;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #39ff14;
+}
+
+.navLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.link:hover,
+.link:focus {
+  color: #ffffff;
+}
+
+.heading {
+  font-size: 2.5rem;
+  margin-top: 80px;
+}
+
+.subheading {
+  margin: 10px 20px;
+}
+
+.message {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
