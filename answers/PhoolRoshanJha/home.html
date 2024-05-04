@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <button id="sortButton">Sort by Change Percentage (Ascending)</button>
+    <button id="downloadButton">Download Excel</button>
+    <button id="shareOnWhatsAppButton">WhatsApp Share</button>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Symbol Name</th>
+                <th>Last Price</th>
+                <th>24 Hour Change Percentage</th>
+                <th>24 Hour Volume</th>
+                <th>24 Hour High</th>
+                <th>24 Hour Low</th>    
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+    <script src="./js/home.js"></script>
+</body>
+</html>

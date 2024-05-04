@@ -1,0 +1,377 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: poppins;
+  background-color: #393939;
+  position: relative;
+  overflow: hidden;
+}
+
+.back_btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: 30px 0px 30px 70px;
+  color: #fff;
+  width: 45px;
+  height: 35px;
+  border-radius: 50%;
+  border-top-right-radius: 30%;
+  border-bottom-right-radius: 30%;
+  opacity: 0.85;
+  transition: 0.2s;
+}
+
+.back_btn_container:hover {
+  background-color: #fff;
+  color: darkturquoise;
+}
+
+.notification {
+  background-color: #fff;
+  position: absolute;
+  right: -30vw;
+  top: 5vh;
+  transform: translateX(-50%);
+  min-width: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px rgba(0, 0%, 0%, 0.2);
+}
+
+.notification .response {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.notification i {
+  margin-right: 5px;
+}
+
+.notification .success i {
+  font-size: 20px;
+  color: #0ee969;
+}
+
+.notification .error i {
+  font-size: 20px;
+  color: rgb(238, 56, 0);
+}
+
+.notification-show {
+  right: -6vw;
+  animation: animateNotification 0.2s ease-in-out;
+}
+
+@keyframes animateNotification {
+  from {
+    right: -30vw;
+  }
+
+  to {
+    right: -6vw;
+  }
+}
+
+.home_container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo_container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  width: 15vw;
+  cursor: pointer;
+}
+
+.logo {
+  width: 45%;
+}
+
+.logo:hover {
+  width: 47%;
+  /* box-shadow: 5px 6px 5px 2px #303030, -3px -4px 7px 2px #ffffff2c; */
+}
+
+.welcome_container {
+  padding-top: 1rem;
+  text-align: center;
+  font-family: raleway;
+  font-size: 1.5rem;
+}
+
+.welcome {
+  background: -webkit-linear-gradient(hsl(207, 15%, 61%), hsl(192, 17%, 94%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bottom_container {
+  display: flex;
+  justify-content: space-evenly;
+  min-height: 90vh;
+}
+
+.design_container {
+  display: grid;
+  place-content: center;
+}
+
+.web-illustration {
+  height: auto;
+  width: 75%;
+}
+
+.form_container {
+  position: relative;
+  display: grid;
+  place-content: center;
+}
+
+.card-container {
+  position: relative;
+}
+
+.flip-card_login {
+  transform: rotateY(0);
+  backface-visibility: hidden;
+}
+
+.rotate-login {
+  transform: rotateY(180deg);
+}
+
+.flip-card_register {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(-180deg);
+  backface-visibility: hidden;
+}
+
+.rotate-register {
+  transform: rotateY(0);
+  opacity: 1 !important;
+}
+
+.card {
+  border-radius: 7px;
+  box-shadow: -3px -3px 5px hsla(0, 0%, 100%, 80%),
+    3px 3px 15px rgba(0, 0%, 0%, 0.5);
+  background: linear-gradient(to top,
+      hsl(48, 6%, 100%) 0%,
+      hsl(60, 6%, 96%) 31%,
+      hsl(40, 9%, 108%) 75%,
+      hsl(60, 4%, 96%) 100%);
+  min-height: fit-content;
+  width: 30vw;
+  transition: all 0.5s linear;
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+}
+
+.login_h3,
+.register_h3 {
+  margin-top: 3rem;
+  font-size: 2.5rem;
+  color: #283048;
+  text-align: center;
+}
+
+#Login-link,
+#register-link {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
+
+.login-link_container {
+  margin-top: -2rem;
+}
+
+.reg_form {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.reg_form::-webkit-scrollbar {
+  display: none;
+}
+
+.login_form_container,
+.register_form-1_container,
+.register_form-2_container {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 25px;
+}
+
+.register_form-1_container,
+.register_form-2_container {
+  width: 25vw;
+  align-items: unset;
+  padding: 0 20px;
+}
+
+.login_email_container,
+.login_password_container,
+.name_container,
+.register_mail_container,
+.register_password_container,
+.confirm_password_container {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  font-size: 17px;
+}
+
+.switch_to_register,
+.switch_to_login {
+  color: darkturquoise;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.register_link_container,
+.login-link_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+
+.login_btn_container {
+  padding-top: 15px;
+}
+
+.next_btn_container {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.next_btn_container,
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.btn {
+  height: 50px;
+  width: 20vw;
+  border-radius: 25px;
+  border-color: transparent;
+  background-color: #2f2e2e;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background-color: darkturquoise;
+  color: #fff;
+}
+
+.input_box {
+  padding: 10px;
+  height: 40px;
+  border-radius: 8px;
+  border-color: transparent;
+}
+
+.btn_arrow {
+  opacity: 0;
+  display: none;
+  transition: all 0.2s;
+}
+
+.btn:hover>.btn_arrow {
+  display: inline-block;
+  opacity: 1;
+}
+
+.hide {
+  display: none !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .notification {
+    right: -100vw;
+  }
+
+  .form_container {
+    width: 100%;
+  }
+
+  .design_container {
+    display: none;
+  }
+
+  .card {
+    width: 90vw;
+  }
+
+  .flip-card_register {
+    opacity: 0;
+  }
+
+  .register_form-1_container,
+  .register_form-2_container {
+    width: 90vw;
+  }
+
+  .login_email_container,
+  .login_password_container,
+  .name_container,
+  .register_mail_container,
+  .register_password_container,
+  .confirm_password_container {
+    width: 82vw;
+  }
+
+  .btn {
+    width: 82vw;
+  }
+
+  .register_form-1_container,
+  .register_form-2_container {
+    padding: 0 8px;
+  }
+
+  .notification-show {
+    right: -6vw;
+    animation: animateNotification 0.2s ease-in-out;
+  }
+
+  @keyframes animateNotification {
+    from {
+      right: -100vw;
+    }
+
+    to {
+      right: -6vw;
+    }
+  }
+}

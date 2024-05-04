@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-y: auto;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    height: 40px; /* Adjust the height as needed */
+}
+
+th {
+    background-color: #f2f2f2;
+}
