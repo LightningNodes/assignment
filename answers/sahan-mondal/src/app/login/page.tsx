@@ -35,10 +35,6 @@ const Login = () => {
             })
     };
 
-    if (typeof window === 'undefined') {
-        return null;
-    }
-
     return (
         <div className="flex justify-center items-center h-screen bg-slate-50">
             <form onSubmit={handleSubmit} className="w-full max-w-sm">

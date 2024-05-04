@@ -106,10 +106,6 @@ export default function Home() {
       })
   }
 
-  if (typeof window === 'undefined') {
-      return null;
-  }
-
   if (!isLoggedIn) {
     return (
       <div className="flex justify-center items-center h-screen bg-white">
