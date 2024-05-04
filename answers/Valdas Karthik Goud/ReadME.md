@@ -1,7 +1,7 @@
 ## Contact details
 
-Vaishnavi Kahar
+Valdas Karthik Goud
 
-Email : kaharvaishnavi@iitbhilai.ac.in
+Email : valdaskarthikgoud@iitbhilai.ac.in
 
-Mobile no. : 8483927844
+Mobile no. : 9346507231
