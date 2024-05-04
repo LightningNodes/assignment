@@ -1,0 +1,15 @@
+body {
+    background-color: darkblue;
+}
+
+h1, h3 {
+    text-align: center;
+    color: aliceblue;
+}
+
+a {
+    display: block;
+    text-align: center;
+    color: aliceblue;
+    font-size: 30px;
+}
