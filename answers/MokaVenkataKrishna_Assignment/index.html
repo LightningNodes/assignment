@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi42 Crypto Tracker</title>
+    <!-- Add any necessary CSS files or CDN links here -->
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0.5rem;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Pi42 Crypto Tracker</h1>
+    </header>
+
+    <main>
+        <p>This web application tracks live pricing of crypto contracts listed in Pi42.</p>
+        <p>Please proceed to authenticate to access the live ticker page.</p>
+        <!-- Interactive elements -->
+        <button class="btn" onclick="redirectToAuthentication()">Authenticate</button>
+        <a href="#" class="btn">Learn More</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Pi42 Crypto Tracker</p>
+    </footer>
+
+    <!-- Add any necessary JavaScript files or CDN links here -->
+    <script>
+        // JavaScript for interaction
+        function redirectToAuthentication() {
+            // You can implement redirection logic here
+            alert('Redirecting to authentication page...');
+        }
+    </script>
+</body>
+</html>
