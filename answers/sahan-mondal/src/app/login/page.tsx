@@ -75,7 +75,7 @@ const Login = () => {
                     </button>
                 </div>
                 <div className="flex items-center justify-center mt-4">
-                    <span className="mr-2 text-gray-500">Don't have an account?</span>
+                    <span className="mr-2 text-gray-500">Dont have an account?</span>
                     <a href="/register" className="text-blue-500 hover:underline">Register here</a>
                 </div>
                 {error !== "" ? (
