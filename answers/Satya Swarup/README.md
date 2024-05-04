@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-- Live URL: [Website](https://crypto-web-blue.vercel.app/login)
+- Live URL: [Website](https://crypto-m261mu2yy-folkblues-projects.vercel.app/)
 
 ## Available Scripts
 
