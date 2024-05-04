@@ -24,12 +24,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* {isLoggedIn ? (
+        {isLoggedIn ? (
           <CryptoContractsPage user={user} onUserLogout={handleUserLogout}/>
         ) : (
           <button onClick={handleGoogleSignIn}>Sign in with Google</button>
-        )} */}
-        <CryptoContractsPage user={user} onUserLogout={handleUserLogout}/>
+        )}
+        {/* <CryptoContractsPage user={user} onUserLogout={handleUserLogout}/> */}
       </header>
     </div>
   );
