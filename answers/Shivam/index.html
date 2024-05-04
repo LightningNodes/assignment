@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Contracts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer; 
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #e2e2e2;
+        }
+    </style>
+    <script>
+        function establishConnection() {
+            const socketURL = "wss://fawss.pi42.com/socket.io/?EIO=4&transport=websocket";
+            const socket = new WebSocket(socketURL);
+            socket.onopen = () => {
+                console.log('WebSocket connection established.');
+                socket.send("40");
+            };
+            socket.onmessage = (event) => {
+                console.log('Message from server:', event.data);
+                const startIndex = event.data.indexOf('["allContractDetails"');
+
+                const dataString = event.data.substring(startIndex);
+
+                const contractData = JSON.parse(dataString);
+
+                const tableElement = document.getElementById("contractTable");
+
+                tableElement.innerHTML = "";
+
+                contractData.forEach((symbolData) => {
+                    let shouldInsertRow = false;
+                    for (const symbolName in symbolData) {
+                        if (symbolData.hasOwnProperty(symbolName)) {
+                            const symbolDetails = symbolData[symbolName];
+                            if (symbolDetails.lastPrice !== undefined ||
+                                symbolDetails.marketPrice !== undefined ||
+                                symbolDetails.priceChangePercent !== undefined ||
+                                symbolDetails.baseAssetVolume !== undefined) {
+                                shouldInsertRow = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (shouldInsertRow) {
+                        for (const symbolName in symbolData) {
+                            if (symbolData.hasOwnProperty(symbolName)) {
+                                const symbolDetails = symbolData[symbolName];
+                                const row = tableElement.insertRow();
+                                row.insertCell(0).innerHTML = symbolName;
+                                row.insertCell(1).innerHTML = symbolDetails.lastPrice !== undefined ? symbolDetails.lastPrice : '';
+                                row.insertCell(2).innerHTML = symbolDetails.marketPrice !== undefined ? symbolDetails.marketPrice : '';
+                                row.insertCell(3).innerHTML = symbolDetails.priceChangePercent !== undefined ? symbolDetails.priceChangePercent : '';
+                                row.insertCell(4).innerHTML = symbolDetails.baseAssetVolume !== undefined ? symbolDetails.baseAssetVolume : '';
+                            }
+                        }
+                    }
+                });
+            };
+
+            socket.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
+
+            socket.onclose = () => {
+                console.log('WebSocket connection closed.');
+            };
+        }
+
+        function sortTable() {
+            const table = document.getElementById("contractTable");
+            const rows = table.rows;
+            let sorting = true;
+            let shouldSwap = false;
+            let i;
+
+            while (sorting) {
+                sorting = false;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwap = false;
+                    const x = rows[i].getElementsByTagName("TD")[0];
+                    const y = rows[i + 1].getElementsByTagName("TD")[0];
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwap = true;
+                        break;
+                    }
+                }
+                if (shouldSwap) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    sorting = true;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Crypto</h1>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <button onclick="establishConnection()">Connect WebSocket</button>
+        <button onclick="sortTable()">Sort by Symbol Name</button>
+    </div>
+    <table id="contractTable" border="1">
+        <tr>
+            <th>Symbol Name</th>
+            <th>Last Price</th>
+            <th>Market Price</th>
+            <th>Price Change Percent</th>
+            <th>Base Asset Volume</th>
+        </tr>
+    </table>
+</body>
+</html>
