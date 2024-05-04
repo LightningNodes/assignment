@@ -1,0 +1,24 @@
+.crypto-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.crypto-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 1%;
+    padding: 1%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.crypto-box h2,
+.crypto-box p,
+.crypto-box button {
+    flex: 1;
+    text-align: center;
+}
