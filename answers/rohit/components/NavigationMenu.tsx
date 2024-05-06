@@ -16,18 +16,18 @@ import logout from "@/lib/firebase/logout";
 const options: { title: string; href: string; description: string }[] = [
   {
     title: "Sign in",
-    href: "/signin",
+    href: "/auth/signin",
     description: "Login to existing account",
   },
   {
     title: "Sign up",
-    href: "/signup",
+    href: "/auth/signup",
     description: "Create new account",
   },
 ];
 
 export function Navigation() {
-  const user = useAuthContext();
+  const { user } = useAuthContext();
   return (
     <NavigationMenu className="border-b">
       <NavigationMenuList>

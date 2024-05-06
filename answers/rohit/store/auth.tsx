@@ -10,7 +10,10 @@ import {
 
 const auth = getAuth(firebase_app);
 
-const AuthContext = createContext<User | null>(null);
+const AuthContext = createContext<{ user: User | null; loading: boolean }>({
+  user: null,
+  loading: false,
+});
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }: PropsWithChildren) => {
@@ -30,7 +33,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={user}>
+    <AuthContext.Provider value={{ user, loading }}>
       {loading ? <div>loading...</div> : children}
     </AuthContext.Provider>
   );
