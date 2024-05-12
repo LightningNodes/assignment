@@ -36,12 +36,6 @@ export default function Home() {
 
       socket.onopen = () => {
         socket?.send("40");
-        setInterval(() => {
-          if (socket?.readyState === WebSocket.OPEN) {
-            console.log("pinging")
-            socket.send("2");
-          }
-        }, 30000);
       };
 
       socket.onmessage = (event) => {
