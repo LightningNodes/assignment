@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import auth from '../firebase';
 import { useRouter } from 'next/navigation';
 
-interface CryptoDataType {
+export interface CryptoDataType {
   symbol: string;
   lastPrice: number;
   changePercent: number;
@@ -15,7 +15,7 @@ interface CryptoDataType {
 export default function Home() {
   const router = useRouter();
   const [cryptoData, setCryptoData] = useState<CryptoDataType[]>([]);
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | 'none'>('none');
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,41 +29,55 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const socket = new WebSocket("wss://fawss.pi42.com/socket.io/?EIO=4&transport=websocket");
+    let socket: WebSocket | null = null;
 
-    socket.onopen = () => socket.send("40");
+    const connectWebSocket = () => {
+      socket = new WebSocket("wss://fawss.pi42.com/socket.io/?EIO=4&transport=websocket");
 
-    socket.onmessage = (event) => {
-      const data = JSON.parse(event.data.slice(2))[1];
-      if (data) {
-        let cryptoData = Object.entries(data).map(([symbol, value]: [string, any]) => ({
-          symbol: symbol,
-          lastPrice: value.lastPrice,
-          changePercent: parseFloat(value.priceChangePercent),
-          volume: value.baseAssetVolume,
-          high: value.marketPrice,
-          low: value.lastPrice,
-        }));
-        setCryptoData(cryptoData);
-      }
+      socket.onopen = () => {
+        socket?.send("40");
+        setInterval(() => {
+          if (socket?.readyState === WebSocket.OPEN) {
+            console.log("pinging")
+            socket.send("2");
+          }
+        }, 30000);
+      };
+
+      socket.onmessage = (event) => {
+        const data = JSON.parse(event.data.slice(2))[1];
+        if (data) {
+          let cryptoData = Object.entries(data).map(([symbol, value]: [string, any]) => ({
+            symbol: symbol,
+            lastPrice: value.lastPrice,
+            changePercent: parseFloat(value.priceChangePercent),
+            volume: value.baseAssetVolume,
+            high: value.marketPrice,
+            low: value.lastPrice,
+          }));
+          setCryptoData(cryptoData);
+        }
+      };
+
+      socket.onerror = (error) => console.error("WebSocket error:", error);
+
+      socket.onclose = () => {
+        console.log("WebSocket connection closed");
+        setTimeout(connectWebSocket, 2000);
+      };
     };
 
-    socket.onerror = (error) => console.error("WebSocket error:", error);
-    socket.onclose = () => console.log("WebSocket connection closed");
+    connectWebSocket();
 
-    return () => socket.close();
+    return () => {
+      if (socket !== null) {
+        socket.close();
+      }
+    };
   }, []);
 
   const sortData = () => {
-    const sortedData = [...cryptoData];
-    if (sortDirection === 'asc') {
-      sortedData.sort((a, b) => a.changePercent - b.changePercent);
-      setSortDirection('desc');
-    } else {
-      sortedData.sort((a, b) => b.changePercent - a.changePercent);
-      setSortDirection('asc');
-    }
-    setCryptoData(sortedData);
+    setSortDirection(prevDirection => prevDirection === 'none' ? 'asc' : prevDirection === 'asc' ? 'desc' : 'none');
   };
 
   const shareContract = (contract: CryptoDataType) => {
@@ -110,8 +124,8 @@ export default function Home() {
     return (
       <div className="flex justify-center items-center h-screen bg-white">
         <div className="flex items-center justify-center mt-4">
-            <span className="mr-2 text-gray-500">User not logged in!</span>
-            <a href="/login" className="text-blue-500 hover:underline">Login here</a>
+          <span className="mr-2 text-gray-500">User not logged in!</span>
+          <a href="/login" className="text-blue-500 hover:underline">Login here</a>
         </div>
       </div>
     )
@@ -129,44 +143,67 @@ export default function Home() {
         </button>
       </div>
       {cryptoData && cryptoData.length > 0 ? (
-        <table className="w-full border-collapse border border-gray-400">
-          <thead>
-            <tr>
-              <th className="border border-gray-400 px-4 py-2">Symbol Name</th>
-              <th className="border border-gray-400 px-4 py-2">Last Price (₹)</th>
-              <th className="border border-gray-400 px-2 py-2 cursor-pointer" onClick={sortData}>
-                24H Change (%)
-                {sortDirection === 'asc' ? ' ↓' : ' ↑'}
-              </th>
-              <th className="border border-gray-400 px-4 py-2">24H Volume</th>
-              <th className="border border-gray-400 px-4 py-2">24H High (₹)</th>
-              <th className="border border-gray-400 px-4 py-2">24H Low (₹)</th>
-              <th className="border border-gray-400 px-4 py-2">Share</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cryptoData.map((crypto) => (
-              <tr key={crypto.symbol}>
-                <td className="border border-gray-400 px-4 py-2">{crypto.symbol}</td>
-                <td className="border border-gray-400 px-4 py-2 text-green-500">{crypto.lastPrice}</td>
-                <td className={`border border-gray-400 px-2 py-2 ${crypto.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
-                  {crypto.changePercent.toFixed(2)}%
-                </td>
-                <td className="border border-gray-400 px-4 py-2">{crypto.volume}</td>
-                <td className="border border-gray-400 px-4 py-2">{crypto.high}</td>
-                <td className="border border-gray-400 px-4 py-2">{crypto.low}</td>
-                <td className="border border-gray-400 px-4 py-2 flex align-middle justify-center">
-                  <button
-                    className=" text-gray-600 hover:text-gray-800 focus:outline-none"
-                    onClick={() => shareContract(crypto)}
-                  >
-                    Share
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Symbol Name
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Last Price (₹)
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer" onClick={sortData}>
+                  24H Change (%)
+                  {sortDirection === 'none' ? ' =' : sortDirection === 'asc' ? ' ↑' : ' ↓'}
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  24H Volume
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  24H High (₹)
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  24H Low (₹)
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Share
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {cryptoData.slice()
+                .sort((a, b) => {
+                  if (sortDirection === 'asc') {
+                    return a.changePercent - b.changePercent;
+                  } else if (sortDirection === 'desc') {
+                    return b.changePercent - a.changePercent;
+                  } else {
+                    return 0;
+                  }
+                }).map((crypto) => (
+                  <tr key={crypto.symbol}>
+                    <td className="px-6 py-4 whitespace-nowrap">{crypto.symbol}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-green-500">{crypto.lastPrice}</td>
+                    <td className={`px-6 py-4 whitespace-nowrap ${crypto.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                      {crypto.changePercent.toFixed(2)}%
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">{crypto.volume}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{crypto.high}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{crypto.low}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <button
+                        className="text-gray-600 hover:text-gray-800 focus:outline-none"
+                        onClick={() => shareContract(crypto)}
+                      >
+                        Share
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
       ) : (
         <div className="flex justify-center items-center h-screen">
           <div className="w-16 h-16 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin"></div>
