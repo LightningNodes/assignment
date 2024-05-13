@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./Home.css"; // Import the CSS file
+import "./Home.css"; 
 
-function Home() {
+function Home({handleLogout}) {
   const [cryptos, setCryptos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sortByChange, setSortByChange] = useState(false);
@@ -57,8 +57,11 @@ function Home() {
 
   return (
     <div className="container">
+      <h1>Cryptocurrency Prices</h1>
+      <div className="logout-container">
+        <button onClick={handleLogout}>Logout</button>
+      </div>
       <div className="cryptos-container">
-        <h1>Cryptocurrency Prices</h1>
         {loading ? (
           <p>Loading....</p>
         ) : (

@@ -1,64 +1,100 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-  }
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   
-  .cryptos-container {
-    width: 80%;
-    margin-bottom: 20px;
-  }
-  
-  .cryptos-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  thead {
-    background-color: #f2f2f2;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-  }
-  
-  th {
-    position: relative;
-  }
-  
-  th button {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
-  .logout-container {
-    text-align: center;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+  align-items: center;
+  padding-top: 10px; /* Adjusted padding for better spacing */
+}
+
+.container h1 {
+  text-align: center;
+  align-items: center;
+  white-space: nowrap;
+  padding-top:3520px;
+}
+
+.cryptos-container {
+  width: 100vw;
+  /* margin-top: 20px; */
+  /* padding: 20px; */
+  background-color: #34495e;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* .cryptos-container h1 {
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+  background-color: #2980b9;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+} */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #34495e;
+}
+
+thead {
+  background-color: #2980b9;
+  color: #101010;
+}
+
+th{
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #141313;
+  color : #1e1b1b
+}
+
+td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #1b1a1a;
+  color : #fff
+}
+
+th {
+  position: relative;
+}
+
+th button {
+  position: absolute;
+  padding:2px;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #0b0b0b;
+}
+
+th button:hover {
+  color: #121111;
+}
+
+.logout-container {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  padding: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2980b9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1b8be1;
+}
