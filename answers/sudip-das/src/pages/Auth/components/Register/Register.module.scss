@@ -1,0 +1,30 @@
+.register_body {
+    width: 100%;
+    margin-top: var(--sp-xl);
+    background: linear-gradient(317deg, #1549cc -.1%, #32eadf);
+    padding: 1px;
+    border-radius: 8px;
+
+    .body {
+        background-color: #1d2125;
+        border-radius: 8px;
+        overflow: hidden;
+        padding: var(--sp-md);
+
+        .account_para {
+            color: #89a0ae;
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                color: #437eff;
+                cursor: pointer;
+                font-weight: 600;
+
+                &:hover {
+                    color: #4f87ff;
+                }
+            }
+        }
+    }
+}

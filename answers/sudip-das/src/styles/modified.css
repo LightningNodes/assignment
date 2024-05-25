@@ -1,0 +1,46 @@
+.ant-spin-text{
+    text-shadow: none!important;
+}
+.ant-spin-nested-loading{
+    min-height: 50vh;
+}
+.ant-table-cell{
+    &::before{
+        content: none!important;
+    }
+}
+.ant-table-wrapper .ant-table-thead>tr>th{
+    color: #647696;
+        text-transform: capitalize;
+        font-size: 12px;
+        padding-top: 4px;
+        padding-bottom: 12px;
+        border-color: #23345b;
+background-color: rgb(20, 20, 20);
+}
+.ant-table-wrapper .ant-table-tbody>tr>td{
+    color: #d6e0f5;
+    font-size: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: rgb(20, 20, 20);
+}
+.ant-table-cell-row-hover{
+    background: #1f2841!important;
+    cursor: pointer;
+}
+.ant-table-wrapper .ant-table-tbody>tr>td{
+    border: none;
+}
+.ant-table-wrapper .ant-table-column-sorter{
+    color: #647696;
+}
+.ant-table-wrapper .ant-table-thead th.ant-table-column-sort{
+    background: #141414;
+}
+.ant-table-wrapper .ant-table-thead th.ant-table-column-has-sorters:hover{
+    background: #141414;
+}
+.ant-table-wrapper .ant-table-thead th.ant-table-column-has-sorters:hover .ant-table-column-sorter{
+    color: #647696;
+}

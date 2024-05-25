@@ -1,0 +1,97 @@
+.data_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.prices {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-grow: 2;
+
+    .price_item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        padding: 0 12px;
+        position: relative;
+        height: 100%;
+        flex-grow: 1;
+        color: white;
+        line-height: 1;
+
+        :first-child {
+            color: #647696;
+            font-size: 12px;
+        }
+
+        &.align_right {
+            justify-content: flex-end;
+            text-align: right;
+        }
+    }
+}
+
+.changes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 0 12px;
+    position: relative;
+    height: 100%;
+    flex-grow: 1;
+    flex-wrap: wrap;
+
+    .left_data {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .right_data {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .price_item {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+        position: relative;
+        height: 100%;
+        flex-grow: 1;
+        color: white;
+        font-size: 14px;
+        line-height: 1;
+
+        :first-child {
+            color: #647696;
+            font-size: 12px;
+        }
+
+        &.align_right {
+            justify-content: flex-end;
+            text-align: right;
+        }
+    }
+}
+
+.symbol_name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    img {
+        background: white;
+        border-radius: 50%;
+    }
+}
