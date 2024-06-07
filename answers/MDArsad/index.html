@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Contracts</title>
+    <script>
+        // Function to create WebSocket connection
+        function connectWebSocket() {
+            // WebSocket URL
+            const socketURL = "wss://fawss.pi42.com/socket.io/?EIO=4&transport=websocket";
+            
+            // Create WebSocket connection
+            const socket = new WebSocket(socketURL);
+
+            // When the connection is opened
+            socket.onopen = () => {
+                console.log('WebSocket connection established.');
+                
+                // Send the number 40
+                socket.send("40");
+            };
+
+            // When a message is received from the server
+            socket.onmessage = (event) => {
+                console.log('Message from server:', event.data);
+
+                // Find the index where the useful data tuple starts
+                const startIndex = event.data.indexOf('["allContractDetails"');
+
+                // Extract the data tuple containing contract details
+                const dataString = event.data.substring(startIndex);
+
+                // Parse the data tuple as JSON
+                const rawData = JSON.parse(dataString);
+
+                // Get the table element
+                const table = document.getElementById("resultTable");
+
+                // Iterate over each symbol and its details
+                rawData.forEach((symbolData) => {
+                    let shouldInsertRow = false;
+
+                    // Check if any of the attributes for the symbol are defined
+                    for (const symbolName in symbolData) {
+                        if (symbolData.hasOwnProperty(symbolName)) {
+                            const rowData = symbolData[symbolName];
+                            if (rowData.lastPrice !== undefined ||
+                                rowData.marketPrice !== undefined ||
+                                rowData.priceChangePercent !== undefined ||
+                                rowData.baseAssetVolume !== undefined) {
+                                shouldInsertRow = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Insert the row if any attribute for the symbol is defined
+                    if (shouldInsertRow) {
+                        for (const symbolName in symbolData) {
+                            if (symbolData.hasOwnProperty(symbolName)) {
+                                const rowData = symbolData[symbolName];
+                                const row = table.insertRow();
+                                row.insertCell(0).innerHTML = symbolName;
+                                row.insertCell(1).innerHTML = rowData.lastPrice !== undefined ? rowData.lastPrice : '';
+                                row.insertCell(2).innerHTML = rowData.marketPrice !== undefined ? rowData.marketPrice : '';
+                                row.insertCell(3).innerHTML = rowData.priceChangePercent !== undefined ? rowData.priceChangePercent : '';
+                                row.insertCell(4).innerHTML = rowData.baseAssetVolume !== undefined ? rowData.baseAssetVolume : '';
+                            }
+                        }
+                    }
+                });
+            };
+
+            // When an error occurs
+            socket.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
+
+            // When the connection is closed
+            socket.onclose = () => {
+                console.log('WebSocket connection closed.');
+            };
+        }
+    </script>
+</head>
+<body>
+    <h1>WebSocket Example</h1>
+    <button onclick="connectWebSocket()">Connect WebSocket</button>
+    <table id="resultTable" border="1">
+        <tr>
+            <th>Symbol Name</th>
+            <th>Last Price</th>
+            <th>Market Price</th>
+            <th>Price Change Percent</th>
+            <th>Base Asset Volume</th>
+        </tr>
+    </table>
+</body>
+</html>
