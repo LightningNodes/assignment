@@ -1,0 +1,91 @@
+@keyframes gradientWave {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.loggedIn{
+  background: #333131;
+}
+.loggedInContainer{
+  display: flex;
+  justify-content: end;
+  background: #333131;
+  height: 100%;
+  flex: 1;
+}
+
+.container {
+  background: #333131;
+  background-size: 400% 400%;
+  animation: gradientWave 15s ease infinite;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #39ff14;
+}
+
+.navLinks {
+  text-align: center;
+  min-width: 480px;
+  height: fit-content;
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.05); /* More transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: subtle border */
+  backdrop-filter: blur(8px) saturate(180%); /* Increased blur and saturation for depth */
+  -webkit-backdrop-filter: blur(8px) saturate(180%); /* For Safari */
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: white; 
+}
+
+.link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid whitesmoke;
+  width: 100%;
+  margin: 10px;
+  height: 100%;
+  text-align: center;
+  border-radius: 10px;
+  
+}
+
+.link:hover,
+.link:focus {
+  color: #ffffff; /* Bright white on hover */
+  box-shadow: 0 0 8px #ff6601;
+}
+
+.heading {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-top: 80px;
+}
+.message {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  color: #ffffff;
+}
